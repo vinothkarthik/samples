@@ -1,0 +1,503 @@
+vinoth@vinoth-HP-ZBook-15-G3:/work/zeebedocker/zeebe-docker-compose/cluster$ docker-compose up
+Creating network "cluster_zeebe_network" with driver "bridge"
+Pulling node0 (camunda/zeebe:0.20.0)...
+0.20.0: Pulling from camunda/zeebe
+a4d8138d0f6b: Pulling fs layer
+dbdc36973392: Downloading [>                                                  ] a4d8138d0f6b: Downloading [>                                                  ]  457.9kB/45.34MBwnloading [>                a4d8138d0f6b: Pull complete
+dbdc36973392: Pull complete
+f59d6d019dd5: Pull complete
+5fee445fce94: Pull complete
+d270185e6f4d: Pull complete
+0ca0b0a3fc43: Pull complete
+161e9b0bd3c4: Pull complete
+281d298930cc: Pull complete
+11bcf1299dee: Pull complete
+3d17e83fb552: Pull complete
+f274fb88c296: Pull complete
+Digest: sha256:82b076d897ceae790ad00b60302755703eaeea5c903176d66660828b39b350c2
+Status: Downloaded newer image for camunda/zeebe:0.20.0
+Creating zeebe_broker_1 ... 
+Creating zeebe_broker_1 ... done
+Creating zeebe_broker_2 ... 
+Creating zeebe_broker_2 ... done
+Creating zeebe_broker_3 ... 
+Creating zeebe_broker_3 ... done
+Attaching to zeebe_broker_1, zeebe_broker_2, zeebe_broker_3
+zeebe_broker_1 | + configFile=/usr/local/zeebe/conf/zeebe.cfg.toml
+zeebe_broker_1 | ++ hostname -i
+zeebe_broker_2 | + configFile=/usr/local/zeebe/conf/zeebe.cfg.toml
+zeebe_broker_2 | ++ hostname -i
+zeebe_broker_3 | + configFile=/usr/local/zeebe/conf/zeebe.cfg.toml
+zeebe_broker_3 | ++ hostname -i
+zeebe_broker_2 | + export ZEEBE_HOST=172.21.0.3
+zeebe_broker_2 | + ZEEBE_HOST=172.21.0.3
+zeebe_broker_1 | + export ZEEBE_HOST=172.21.0.2
+zeebe_broker_2 | + export ZEEBE_GATEWAY_CLUSTER_HOST=172.21.0.3
+zeebe_broker_1 | + ZEEBE_HOST=172.21.0.2
+zeebe_broker_2 | + ZEEBE_GATEWAY_CLUSTER_HOST=172.21.0.3
+zeebe_broker_3 | + export ZEEBE_HOST=172.21.0.4
+zeebe_broker_3 | + ZEEBE_HOST=172.21.0.4
+zeebe_broker_3 | + export ZEEBE_GATEWAY_CLUSTER_HOST=172.21.0.4
+zeebe_broker_3 | + ZEEBE_GATEWAY_CLUSTER_HOST=172.21.0.4
+zeebe_broker_3 | + '[' false = true ']'
+zeebe_broker_3 | + exec /usr/local/zeebe/bin/broker
+zeebe_broker_1 | + export ZEEBE_GATEWAY_CLUSTER_HOST=172.21.0.2
+zeebe_broker_1 | + ZEEBE_GATEWAY_CLUSTER_HOST=172.21.0.2
+zeebe_broker_1 | + '[' false = true ']'
+zeebe_broker_1 | + exec /usr/local/zeebe/bin/broker
+zeebe_broker_1 | 02:12:12.028 [] [main] DEBUG io.zeebe.util.config - Reading configuration for class io.zeebe.broker.system.configuration.BrokerCfg from file /usr/local/zeebe/conf/zeebe.cfg.toml 
+zeebe_broker_1 | 02:12:12.079 [] [main] DEBUG io.zeebe.broker.system - Initializing configuration with base path /usr/local/zeebe
+zeebe_broker_1 | 02:12:12.169 [] [main] INFO  io.zeebe.broker.system - Version: 0.20.0
+zeebe_broker_1 | 02:12:12.174 [] [main] INFO  io.zeebe.broker.system - Starting broker with configuration {
+zeebe_broker_1 |   "network": {
+zeebe_broker_1 |     "host": "172.21.0.2",
+zeebe_broker_1 |     "portOffset": 0,
+zeebe_broker_1 |     "commandApi": {
+zeebe_broker_1 |       "host": "172.21.0.2",
+zeebe_broker_1 |       "port": 26501,
+zeebe_broker_1 |       "sendBufferSize": "16M"
+zeebe_broker_1 |     },
+zeebe_broker_1 |     "internalApi": {
+zeebe_broker_1 |       "host": "172.21.0.2",
+zeebe_broker_1 |       "port": 26502,
+zeebe_broker_1 |       "sendBufferSize": "16M"
+zeebe_broker_1 |     },
+zeebe_broker_1 |     "monitoringApi": {
+zeebe_broker_1 |       "host": "172.21.0.2",
+zeebe_broker_1 |       "port": 9600,
+zeebe_broker_1 |       "sendBufferSize": "16M"
+zeebe_broker_1 |     }
+zeebe_broker_1 |   },
+zeebe_broker_1 |   "cluster": {
+zeebe_broker_1 |     "initialContactPoints": [
+zeebe_broker_1 |       "node0:26502"
+zeebe_broker_1 |     ],
+zeebe_broker_1 |     "partitionIds": [
+zeebe_broker_1 |       1,
+zeebe_broker_1 |       2
+zeebe_broker_1 |     ],
+zeebe_broker_1 |     "nodeId": 0,
+zeebe_broker_1 |     "partitionsCount": 2,
+zeebe_broker_1 |     "replicationFactor": 3,
+zeebe_broker_1 |     "clusterSize": 3,
+zeebe_broker_1 |     "clusterName": "zeebe-cluster"
+zeebe_broker_1 |   },
+zeebe_broker_1 |   "threads": {
+zeebe_broker_1 |     "cpuThreadCount": 2,
+zeebe_broker_1 |     "ioThreadCount": 2
+zeebe_broker_1 |   },
+zeebe_broker_1 |   "data": {
+zeebe_broker_1 |     "directories": [
+zeebe_broker_1 |       "/usr/local/zeebe/data"
+zeebe_broker_1 |     ],
+zeebe_broker_1 |     "logSegmentSize": "512M",
+zeebe_broker_1 |     "snapshotPeriod": "15m",
+zeebe_broker_1 |     "snapshotReplicationPeriod": "5m",
+zeebe_broker_1 |     "maxSnapshots": 3
+zeebe_broker_1 |   },
+zeebe_broker_1 |   "exporters": [],
+zeebe_broker_1 |   "gateway": {
+zeebe_broker_1 |     "enable": true,
+zeebe_broker_1 |     "network": {
+zeebe_broker_1 |       "host": "0.0.0.0",
+zeebe_broker_1 |       "port": 26500
+zeebe_broker_1 |     },
+zeebe_broker_1 |     "cluster": {
+zeebe_broker_1 |       "contactPoint": "172.21.0.2:26502",
+zeebe_broker_1 |       "transportBuffer": "128M",
+zeebe_broker_1 |       "requestTimeout": "15s",
+zeebe_broker_1 |       "clusterName": "zeebe-cluster",
+zeebe_broker_2 | + '[' false = true ']'
+zeebe_broker_1 |       "memberId": "gateway",
+zeebe_broker_2 | + exec /usr/local/zeebe/bin/broker
+zeebe_broker_1 |       "host": "172.21.0.2",
+zeebe_broker_1 |       "port": 26502
+zeebe_broker_1 |     },
+zeebe_broker_1 |     "threads": {
+zeebe_broker_1 |       "managementThreads": 1
+zeebe_broker_2 | 02:12:13.681 [] [main] DEBUG io.zeebe.util.config - Reading configuration for class io.zeebe.broker.system.configuration.BrokerCfg from file /usr/local/zeebe/conf/zeebe.cfg.toml 
+zeebe_broker_1 |     },
+zeebe_broker_1 |     "monitoring": {
+zeebe_broker_1 |       "enabled": false,
+zeebe_broker_1 |       "host": "172.21.0.2",
+zeebe_broker_1 |       "port": 9600
+zeebe_broker_1 |     }
+zeebe_broker_1 |   }
+zeebe_broker_1 | }
+zeebe_broker_2 | 02:12:13.749 [] [main] DEBUG io.zeebe.broker.system - Initializing configuration with base path /usr/local/zeebe
+zeebe_broker_2 | 02:12:13.873 [] [main] INFO  io.zeebe.broker.system - Version: 0.20.0
+zeebe_broker_1 | 02:12:12.250 [service-controller] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Member 0 will contact node: node0:26502
+zeebe_broker_2 | 02:12:13.880 [] [main] INFO  io.zeebe.broker.system - Starting broker with configuration {
+zeebe_broker_2 |   "network": {
+zeebe_broker_2 |     "host": "172.21.0.3",
+zeebe_broker_2 |     "portOffset": 0,
+zeebe_broker_2 |     "commandApi": {
+zeebe_broker_2 |       "host": "172.21.0.3",
+zeebe_broker_2 |       "port": 26501,
+zeebe_broker_2 |       "sendBufferSize": "16M"
+zeebe_broker_2 |     },
+zeebe_broker_1 | 02:12:12.258 [service-controller] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Setup atomix node in cluster zeebe-cluster
+zeebe_broker_2 |     "internalApi": {
+zeebe_broker_2 |       "host": "172.21.0.3",
+zeebe_broker_2 |       "port": 26502,
+zeebe_broker_2 |       "sendBufferSize": "16M"
+zeebe_broker_2 |     },
+zeebe_broker_2 |     "monitoringApi": {
+zeebe_broker_1 | 02:12:12.275 [service-controller] [172.21.0.2:26501-zb-actors-0] INFO  io.zeebe.transport - Bound commandApi.server to /172.21.0.2:26501
+zeebe_broker_2 |       "host": "172.21.0.3",
+zeebe_broker_2 |       "port": 9600,
+zeebe_broker_2 |       "sendBufferSize": "16M"
+zeebe_broker_2 |     }
+zeebe_broker_2 |   },
+zeebe_broker_2 |   "cluster": {
+zeebe_broker_2 |     "initialContactPoints": [
+zeebe_broker_2 |       "node0:26502"
+zeebe_broker_2 |     ],
+zeebe_broker_1 | 02:12:14.062 [service-controller] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=0, commandApi=172.21.0.2:26501} to list of known members
+zeebe_broker_2 |     "partitionIds": [
+zeebe_broker_2 |       1,
+zeebe_broker_2 |       2
+zeebe_broker_2 |     ],
+zeebe_broker_1 | 02:12:14.077 [] [zb-blocking-task-runner-1-172.21.0.2:26501] INFO  io.zeebe.gateway - Version: 0.20.0
+zeebe_broker_2 |     "nodeId": 1,
+zeebe_broker_2 |     "partitionsCount": 2,
+zeebe_broker_2 |     "replicationFactor": 3,
+zeebe_broker_2 |     "clusterSize": 3,
+zeebe_broker_2 |     "clusterName": "zeebe-cluster"
+zeebe_broker_2 |   },
+zeebe_broker_2 |   "threads": {
+zeebe_broker_2 |     "cpuThreadCount": 2,
+zeebe_broker_2 |     "ioThreadCount": 2
+zeebe_broker_2 |   },
+zeebe_broker_2 |   "data": {
+zeebe_broker_2 |     "directories": [
+zeebe_broker_2 |       "/usr/local/zeebe/data"
+zeebe_broker_2 |     ],
+zeebe_broker_2 |     "logSegmentSize": "512M",
+zeebe_broker_2 |     "snapshotPeriod": "15m",
+zeebe_broker_2 |     "snapshotReplicationPeriod": "5m",
+zeebe_broker_2 |     "maxSnapshots": 3
+zeebe_broker_2 |   },
+zeebe_broker_2 |   "exporters": [],
+zeebe_broker_2 |   "gateway": {
+zeebe_broker_2 |     "enable": true,
+zeebe_broker_2 |     "network": {
+zeebe_broker_2 |       "host": "0.0.0.0",
+zeebe_broker_2 |       "port": 26500
+zeebe_broker_2 |     },
+zeebe_broker_2 |     "cluster": {
+zeebe_broker_1 | 02:12:14.079 [] [zb-blocking-task-runner-1-172.21.0.2:26501] INFO  io.zeebe.gateway - Starting gateway with configuration {
+zeebe_broker_1 |   "enable": true,
+zeebe_broker_1 |   "network": {
+zeebe_broker_1 |     "host": "0.0.0.0",
+zeebe_broker_1 |     "port": 26500
+zeebe_broker_1 |   },
+zeebe_broker_1 |   "cluster": {
+zeebe_broker_1 |     "contactPoint": "172.21.0.2:26502",
+zeebe_broker_1 |     "transportBuffer": "128M",
+zeebe_broker_1 |     "requestTimeout": "15s",
+zeebe_broker_2 |       "contactPoint": "172.21.0.3:26502",
+zeebe_broker_2 |       "transportBuffer": "128M",
+zeebe_broker_2 |       "requestTimeout": "15s",
+zeebe_broker_2 |       "clusterName": "zeebe-cluster",
+zeebe_broker_2 |       "memberId": "gateway",
+zeebe_broker_2 |       "host": "172.21.0.3",
+zeebe_broker_2 |       "port": 26502
+zeebe_broker_1 |     "clusterName": "zeebe-cluster",
+zeebe_broker_2 |     },
+zeebe_broker_1 |     "memberId": "gateway",
+zeebe_broker_2 |     "threads": {
+zeebe_broker_1 |     "host": "172.21.0.2",
+zeebe_broker_2 |       "managementThreads": 1
+zeebe_broker_1 |     "port": 26502
+zeebe_broker_2 |     },
+zeebe_broker_1 |   },
+zeebe_broker_2 |     "monitoring": {
+zeebe_broker_2 |       "enabled": false,
+zeebe_broker_2 |       "host": "172.21.0.3",
+zeebe_broker_1 |   "threads": {
+zeebe_broker_2 |       "port": 9600
+zeebe_broker_2 |     }
+zeebe_broker_2 |   }
+zeebe_broker_2 | }
+zeebe_broker_1 |     "managementThreads": 1
+zeebe_broker_1 |   },
+zeebe_broker_1 |   "monitoring": {
+zeebe_broker_1 |     "enabled": false,
+zeebe_broker_1 |     "host": "172.21.0.2",
+zeebe_broker_1 |     "port": 9600
+zeebe_broker_2 | 02:12:13.989 [service-controller] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Member 1 will contact node: node0:26502
+zeebe_broker_1 |   }
+zeebe_broker_1 | }
+zeebe_broker_2 | 02:12:14.013 [service-controller] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Setup atomix node in cluster zeebe-cluster
+zeebe_broker_2 | 02:12:14.049 [service-controller] [172.21.0.3:26501-zb-actors-0] INFO  io.zeebe.transport - Bound commandApi.server to /172.21.0.3:26501
+zeebe_broker_1 | 02:12:14.296 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 0 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQAA}}, time=1572401534295} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_1 | 02:12:14.298 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQAA}}, time=1572401534295} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_1 | 02:12:14.309 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-0] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '0' with address '172.21.0.2:26501' on transport 'gateway-broker-client'
+zeebe_broker_3 | 02:12:15.611 [] [main] DEBUG io.zeebe.util.config - Reading configuration for class io.zeebe.broker.system.configuration.BrokerCfg from file /usr/local/zeebe/conf/zeebe.cfg.toml 
+zeebe_broker_3 | 02:12:15.681 [] [main] DEBUG io.zeebe.broker.system - Initializing configuration with base path /usr/local/zeebe
+zeebe_broker_3 | 02:12:15.815 [] [main] INFO  io.zeebe.broker.system - Version: 0.20.0
+zeebe_broker_3 | 02:12:15.822 [] [main] INFO  io.zeebe.broker.system - Starting broker with configuration {
+zeebe_broker_3 |   "network": {
+zeebe_broker_3 |     "host": "172.21.0.4",
+zeebe_broker_3 |     "portOffset": 0,
+zeebe_broker_3 |     "commandApi": {
+zeebe_broker_3 |       "host": "172.21.0.4",
+zeebe_broker_3 |       "port": 26501,
+zeebe_broker_3 |       "sendBufferSize": "16M"
+zeebe_broker_3 |     },
+zeebe_broker_3 |     "internalApi": {
+zeebe_broker_3 |       "host": "172.21.0.4",
+zeebe_broker_3 |       "port": 26502,
+zeebe_broker_3 |       "sendBufferSize": "16M"
+zeebe_broker_3 |     },
+zeebe_broker_3 |     "monitoringApi": {
+zeebe_broker_3 |       "host": "172.21.0.4",
+zeebe_broker_3 |       "port": 9600,
+zeebe_broker_3 |       "sendBufferSize": "16M"
+zeebe_broker_3 |     }
+zeebe_broker_3 |   },
+zeebe_broker_3 |   "cluster": {
+zeebe_broker_3 |     "initialContactPoints": [
+zeebe_broker_3 |       "node0:26502"
+zeebe_broker_3 |     ],
+zeebe_broker_3 |     "partitionIds": [
+zeebe_broker_3 |       1,
+zeebe_broker_3 |       2
+zeebe_broker_3 |     ],
+zeebe_broker_3 |     "nodeId": 2,
+zeebe_broker_3 |     "partitionsCount": 2,
+zeebe_broker_3 |     "replicationFactor": 3,
+zeebe_broker_3 |     "clusterSize": 3,
+zeebe_broker_3 |     "clusterName": "zeebe-cluster"
+zeebe_broker_3 |   },
+zeebe_broker_3 |   "threads": {
+zeebe_broker_3 |     "cpuThreadCount": 2,
+zeebe_broker_3 |     "ioThreadCount": 2
+zeebe_broker_3 |   },
+zeebe_broker_3 |   "data": {
+zeebe_broker_3 |     "directories": [
+zeebe_broker_3 |       "/usr/local/zeebe/data"
+zeebe_broker_3 |     ],
+zeebe_broker_3 |     "logSegmentSize": "512M",
+zeebe_broker_3 |     "snapshotPeriod": "15m",
+zeebe_broker_3 |     "snapshotReplicationPeriod": "5m",
+zeebe_broker_3 |     "maxSnapshots": 3
+zeebe_broker_3 |   },
+zeebe_broker_3 |   "exporters": [],
+zeebe_broker_3 |   "gateway": {
+zeebe_broker_3 |     "enable": true,
+zeebe_broker_3 |     "network": {
+zeebe_broker_3 |       "host": "0.0.0.0",
+zeebe_broker_3 |       "port": 26500
+zeebe_broker_3 |     },
+zeebe_broker_3 |     "cluster": {
+zeebe_broker_3 |       "contactPoint": "172.21.0.4:26502",
+zeebe_broker_3 |       "transportBuffer": "128M",
+zeebe_broker_3 |       "requestTimeout": "15s",
+zeebe_broker_3 |       "clusterName": "zeebe-cluster",
+zeebe_broker_3 |       "memberId": "gateway",
+zeebe_broker_3 |       "host": "172.21.0.4",
+zeebe_broker_3 |       "port": 26502
+zeebe_broker_3 |     },
+zeebe_broker_3 |     "threads": {
+zeebe_broker_3 |       "managementThreads": 1
+zeebe_broker_3 |     },
+zeebe_broker_3 |     "monitoring": {
+zeebe_broker_3 |       "enabled": false,
+zeebe_broker_3 |       "host": "172.21.0.4",
+zeebe_broker_3 |       "port": 9600
+zeebe_broker_3 |     }
+zeebe_broker_3 |   }
+zeebe_broker_3 | }
+zeebe_broker_3 | 02:12:15.960 [service-controller] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Member 2 will contact node: node0:26502
+zeebe_broker_3 | 02:12:15.971 [service-controller] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Setup atomix node in cluster zeebe-cluster
+zeebe_broker_3 | 02:12:15.985 [service-controller] [172.21.0.4:26501-zb-actors-1] INFO  io.zeebe.transport - Bound commandApi.server to /172.21.0.4:26501
+zeebe_broker_2 | 02:12:16.313 [service-controller] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=1, commandApi=172.21.0.3:26501} to list of known members
+zeebe_broker_2 | 02:12:16.324 [] [zb-blocking-task-runner-1-172.21.0.3:26501] INFO  io.zeebe.gateway - Version: 0.20.0
+zeebe_broker_2 | 02:12:16.326 [] [zb-blocking-task-runner-1-172.21.0.3:26501] INFO  io.zeebe.gateway - Starting gateway with configuration {
+zeebe_broker_2 |   "enable": true,
+zeebe_broker_2 |   "network": {
+zeebe_broker_2 |     "host": "0.0.0.0",
+zeebe_broker_2 |     "port": 26500
+zeebe_broker_2 |   },
+zeebe_broker_2 |   "cluster": {
+zeebe_broker_2 |     "contactPoint": "172.21.0.3:26502",
+zeebe_broker_2 |     "transportBuffer": "128M",
+zeebe_broker_2 |     "requestTimeout": "15s",
+zeebe_broker_2 |     "clusterName": "zeebe-cluster",
+zeebe_broker_2 |     "memberId": "gateway",
+zeebe_broker_2 |     "host": "172.21.0.3",
+zeebe_broker_2 |     "port": 26502
+zeebe_broker_2 |   },
+zeebe_broker_2 |   "threads": {
+zeebe_broker_2 |     "managementThreads": 1
+zeebe_broker_2 |   },
+zeebe_broker_2 |   "monitoring": {
+zeebe_broker_2 |     "enabled": false,
+zeebe_broker_2 |     "host": "172.21.0.3",
+zeebe_broker_2 |     "port": 9600
+zeebe_broker_2 |   }
+zeebe_broker_2 | }
+zeebe_broker_2 | 02:12:16.580 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 1 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQAA}}, time=1572401536579} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_2 | 02:12:16.583 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQAA}}, time=1572401536579} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_2 | 02:12:16.599 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-1] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '1' with address '172.21.0.3:26501' on transport 'gateway-broker-client'
+zeebe_broker_1 | 02:12:16.742 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 0 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536576}, time=1572401536742} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_1 | 02:12:16.744 [topology] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=1, commandApi=172.21.0.3:26501} to list of known members
+zeebe_broker_1 | 02:12:16.744 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536576}, time=1572401536742} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_1 | 02:12:16.751 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-0] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '1' with address '172.21.0.3:26501' on transport 'gateway-broker-client'
+zeebe_broker_2 | 02:12:16.789 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 1 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534291}, time=1572401536789} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_2 | 02:12:16.791 [topology] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=0, commandApi=172.21.0.2:26501} to list of known members
+zeebe_broker_2 | 02:12:16.795 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534291}, time=1572401536789} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_2 | 02:12:16.809 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-0] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '0' with address '172.21.0.2:26501' on transport 'gateway-broker-client'
+zeebe_broker_3 | 02:12:17.968 [service-controller] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=2, commandApi=172.21.0.4:26501} to list of known members
+zeebe_broker_3 | 02:12:17.970 [] [zb-blocking-task-runner-1-172.21.0.4:26501] INFO  io.zeebe.gateway - Version: 0.20.0
+zeebe_broker_3 | 02:12:17.972 [] [zb-blocking-task-runner-1-172.21.0.4:26501] INFO  io.zeebe.gateway - Starting gateway with configuration {
+zeebe_broker_3 |   "enable": true,
+zeebe_broker_3 |   "network": {
+zeebe_broker_3 |     "host": "0.0.0.0",
+zeebe_broker_3 |     "port": 26500
+zeebe_broker_3 |   },
+zeebe_broker_3 |   "cluster": {
+zeebe_broker_3 |     "contactPoint": "172.21.0.4:26502",
+zeebe_broker_3 |     "transportBuffer": "128M",
+zeebe_broker_3 |     "requestTimeout": "15s",
+zeebe_broker_3 |     "clusterName": "zeebe-cluster",
+zeebe_broker_3 |     "memberId": "gateway",
+zeebe_broker_3 |     "host": "172.21.0.4",
+zeebe_broker_3 |     "port": 26502
+zeebe_broker_3 |   },
+zeebe_broker_3 |   "threads": {
+zeebe_broker_3 |     "managementThreads": 1
+zeebe_broker_3 |   },
+zeebe_broker_3 |   "monitoring": {
+zeebe_broker_3 |     "enabled": false,
+zeebe_broker_3 |     "host": "172.21.0.4",
+zeebe_broker_3 |     "port": 9600
+zeebe_broker_3 |   }
+zeebe_broker_3 | }
+zeebe_broker_3 | 02:12:18.159 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 2 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQAA}}, time=1572401538158} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_3 | 02:12:18.165 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQAA}}, time=1572401538158} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_3 | 02:12:18.172 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-1] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '2' with address '172.21.0.4:26501' on transport 'gateway-broker-client'
+zeebe_broker_1 | 02:12:18.245 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 0 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538156}, time=1572401538244} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_1 | 02:12:18.250 [topology] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=2, commandApi=172.21.0.4:26501} to list of known members
+zeebe_broker_1 | 02:12:18.250 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538156}, time=1572401538244} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_1 | 02:12:18.251 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-1] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '2' with address '172.21.0.4:26501' on transport 'gateway-broker-client'
+zeebe_broker_3 | 02:12:18.277 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 2 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534291}, time=1572401538277} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_3 | 02:12:18.279 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534291}, time=1572401538277} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_3 | 02:12:18.281 [topology] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=0, commandApi=172.21.0.2:26501} to list of known members
+zeebe_broker_3 | 02:12:18.285 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-0] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '0' with address '172.21.0.2:26501' on transport 'gateway-broker-client'
+zeebe_broker_2 | 02:12:18.296 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 1 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538156}, time=1572401538296} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_2 | 02:12:18.298 [topology] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=2, commandApi=172.21.0.4:26501} to list of known members
+zeebe_broker_3 | 02:12:18.301 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 2 received event ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536576}, time=1572401538300} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}}
+zeebe_broker_3 | 02:12:18.302 [topology] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Adding Node{nodeId=1, commandApi=172.21.0.3:26501} to list of known members
+zeebe_broker_3 | 02:12:18.303 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536576}, time=1572401538300} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_2 | 02:12:18.303 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=MEMBER_ADDED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQAA}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538156}, time=1572401538296} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={}} 
+zeebe_broker_2 | 02:12:18.304 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-0] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '2' with address '172.21.0.4:26501' on transport 'gateway-broker-client'
+zeebe_broker_3 | 02:12:18.304 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-0] INFO  io.zeebe.transport.endpoint - Registering endpoint for node '1' with address '172.21.0.3:26501' on transport 'gateway-broker-client'
+zeebe_broker_1 | 02:12:25.094 [service-controller] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Creating leader election for partition 2 in node 0
+zeebe_broker_1 | 02:12:25.095 [service-controller] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Creating leader election for partition 1 in node 0
+zeebe_broker_1 | 02:12:25.097 [io.zeebe.broker.clustering.base.partitions.PartitionLeaderElection] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Partition role transitioning from null to LEADER
+zeebe_broker_1 | 02:12:25.097 [io.zeebe.broker.clustering.base.partitions.PartitionLeaderElection] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Partition role transitioning from null to LEADER
+zeebe_broker_1 | 02:12:25.098 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Removing follower partition service for partition 1
+zeebe_broker_1 | 02:12:25.098 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Removing follower partition service for partition 2
+zeebe_broker_1 | 02:12:25.102 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Installing leader partition service for partition 1
+zeebe_broker_1 | 02:12:25.102 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Installing leader partition service for partition 2
+zeebe_broker_1 | 02:12:25.130 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Configuring distributed-log on node 0 with logName raft-atomix-partition-1
+zeebe_broker_1 | 02:12:25.138 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Configuring distributed-log on node 0 with logName raft-atomix-partition-2
+zeebe_broker_1 | 02:12:25.164 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Configured with LogStream raft-atomix-partition-2 and last appended event at position -1
+zeebe_broker_1 | 02:12:25.165 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Configured with LogStream raft-atomix-partition-1 and last appended event at position -1
+zeebe_broker_2 | 02:12:25.170 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Configuring distributed-log on node 1 with logName raft-atomix-partition-2
+zeebe_broker_3 | 02:12:25.175 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Configuring distributed-log on node 2 with logName raft-atomix-partition-2
+zeebe_broker_3 | 02:12:25.180 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Configuring distributed-log on node 2 with logName raft-atomix-partition-1
+zeebe_broker_2 | 02:12:25.184 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Configuring distributed-log on node 1 with logName raft-atomix-partition-1
+zeebe_broker_2 | 02:12:25.346 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Configured with LogStream raft-atomix-partition-2 and last appended event at position -1
+zeebe_broker_2 | 02:12:25.349 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Configured with LogStream raft-atomix-partition-1 and last appended event at position -1
+zeebe_broker_3 | 02:12:25.388 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Configured with LogStream raft-atomix-partition-1 and last appended event at position -1
+zeebe_broker_3 | 02:12:25.392 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Configured with LogStream raft-atomix-partition-2 and last appended event at position -1
+zeebe_broker_1 | 02:12:25.395 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Node 0 claiming leadership for LogStream partition 1 at term 1.
+zeebe_broker_3 | 02:12:25.400 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Node 0 claiming leadership for LogStream partition 1 at term 1.
+zeebe_broker_1 | 02:12:25.401 [] [raft-partition-group-raft-atomix-0] DEBUG io.zeebe.distributedlog.impl.DistributedLogstreamPartition - Partition 1 for node 0 claimed leadership
+zeebe_broker_2 | 02:12:25.405 [] [raft-server-raft-atomix-partition-1-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-1 - Node 0 claiming leadership for LogStream partition 1 at term 1.
+zeebe_broker_1 | 02:12:25.416 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Node 0 claiming leadership for LogStream partition 2 at term 1.
+zeebe_broker_1 | 02:12:25.421 [] [raft-partition-group-raft-atomix-0] DEBUG io.zeebe.distributedlog.impl.DistributedLogstreamPartition - Partition 2 for node 0 claimed leadership
+zeebe_broker_2 | 02:12:25.464 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Node 0 claiming leadership for LogStream partition 2 at term 1.
+zeebe_broker_3 | 02:12:25.464 [] [raft-server-raft-atomix-partition-2-state] DEBUG io.zeebe.distributedlog.impl.DefaultDistributedLogstreamService-2 - Node 0 claiming leadership for LogStream partition 2 at term 1.
+zeebe_broker_1 | 02:12:25.513 [service-controller] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.logstreams.snapshot - Available snapshots: []
+zeebe_broker_1 | 02:12:25.513 [service-controller] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.logstreams.snapshot - Available snapshots: []
+zeebe_broker_1 | 02:12:26.454 [service-controller] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.logstreams.snapshot - Opened database from '/usr/local/zeebe/data/partition-2/state/runtime'.
+zeebe_broker_1 | 02:12:26.467 [service-controller] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.logstreams.restore.BrokerRestoreServer - Started restore server for topics: log-replication-2, restore-info-2, snapshot-request-2, snapshot-info-request-2
+zeebe_broker_1 | 02:12:26.470 [service-controller] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.logstreams.snapshot - Opened database from '/usr/local/zeebe/data/partition-1/state/runtime'.
+zeebe_broker_1 | 02:12:26.476 [service-controller] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.logstreams.restore.BrokerRestoreServer - Started restore server for topics: log-replication-1, restore-info-1, snapshot-request-1, snapshot-info-request-1
+zeebe_broker_1 | 02:12:26.477 [topology] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=0, commandApi=172.21.0.2:26501} with state LEADER
+zeebe_broker_1 | 02:12:26.478 [topology] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=0, commandApi=172.21.0.2:26501} with state LEADER
+zeebe_broker_1 | 02:12:26.479 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.2:26501-zb-actors-1] INFO  io.zeebe.broker.system - Partition '2' is installed.
+zeebe_broker_1 | 02:12:26.479 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.2:26501-zb-actors-1] INFO  io.zeebe.broker.system - Partition '1' is installed.
+zeebe_broker_1 | 02:12:26.480 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.2:26501-zb-actors-1] INFO  io.zeebe.broker.system - All partitions are installed. Broker is ready!
+zeebe_broker_1 | 02:12:26.490 [stream-processor] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.logstreams - Recovering state of partition 2 from snapshot
+zeebe_broker_1 | 02:12:26.491 [stream-processor] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.logstreams - Recovering state of partition 1 from snapshot
+zeebe_broker_1 | 02:12:26.541 [stream-processor] [172.21.0.2:26501-zb-actors-0] INFO  io.zeebe.logstreams - Recovered state of partition 1 from snapshot at position -1
+zeebe_broker_1 | 02:12:26.541 [stream-processor] [172.21.0.2:26501-zb-actors-1] INFO  io.zeebe.logstreams - Recovered state of partition 2 from snapshot at position -1
+zeebe_broker_1 | 02:12:26.545 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 0 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQACAQAAAAACAAAAAA==}}, time=1572401546544} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=LEADER, 2=LEADER}}
+zeebe_broker_2 | 02:12:26.546 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 1 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQACAQAAAAACAAAAAA==}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534292}, time=1572401546545} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=LEADER, 2=LEADER}}
+zeebe_broker_3 | 02:12:26.546 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 2 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQACAQAAAAACAAAAAA==}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534292}, time=1572401546545} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=LEADER, 2=LEADER}}
+zeebe_broker_2 | 02:12:26.547 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQACAQAAAAACAAAAAA==}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534292}, time=1572401546545} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=LEADER, 2=LEADER}} 
+zeebe_broker_2 | 02:12:26.547 [topology] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=0, commandApi=172.21.0.2:26501} with state LEADER
+zeebe_broker_2 | 02:12:26.548 [topology] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=0, commandApi=172.21.0.2:26501} with state LEADER
+zeebe_broker_3 | 02:12:26.548 [topology] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=0, commandApi=172.21.0.2:26501} with state LEADER
+zeebe_broker_3 | 02:12:26.547 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQACAQAAAAACAAAAAA==}, version=3.2.0-alpha4, timestamp=1572401534291, state=ALIVE, incarnationNumber=1572401534292}, time=1572401546545} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=LEADER, 2=LEADER}} 
+zeebe_broker_3 | 02:12:26.549 [topology] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=0, commandApi=172.21.0.2:26501} with state LEADER
+zeebe_broker_1 | 02:12:26.621 [stream-processor-snapshot-director] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.logstreams.snapshot - The position of the last valid snapshot is '-1'. Taking snapshots beyond this position.
+zeebe_broker_1 | 02:12:26.621 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=0, address=172.21.0.2:26502, properties={brokerInfo=EADJAAAAAQAAAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4yOjI2NTAxBQACAQAAAAACAAAAAA==}}, time=1572401546544} with BrokerInfo{nodeId=0, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=LEADER, 2=LEADER}} 
+zeebe_broker_1 | 02:12:26.713 [stream-processor-snapshot-director] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.logstreams.snapshot - The position of the last valid snapshot is '-1'. Taking snapshots beyond this position.
+zeebe_broker_2 | 02:12:27.276 [service-controller] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Creating leader election for partition 2 in node 1
+zeebe_broker_2 | 02:12:27.276 [service-controller] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Creating leader election for partition 1 in node 1
+zeebe_broker_2 | 02:12:27.277 [io.zeebe.broker.clustering.base.partitions.PartitionLeaderElection] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Partition role transitioning from null to FOLLOWER
+zeebe_broker_2 | 02:12:27.277 [io.zeebe.broker.clustering.base.partitions.PartitionLeaderElection] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Partition role transitioning from null to FOLLOWER
+zeebe_broker_2 | 02:12:27.279 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Removing leader partition services for partition 2
+zeebe_broker_2 | 02:12:27.279 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Removing leader partition services for partition 1
+zeebe_broker_2 | 02:12:27.280 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Installing follower partition service for partition 1
+zeebe_broker_2 | 02:12:27.281 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Installing follower partition service for partition 2
+zeebe_broker_2 | 02:12:27.420 [service-controller] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.logstreams.restore.BrokerRestoreServer - Started restore server for topics: log-replication-1, restore-info-1, snapshot-request-1, snapshot-info-request-1
+zeebe_broker_2 | 02:12:27.420 [service-controller] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.logstreams.restore.BrokerRestoreServer - Started restore server for topics: log-replication-2, restore-info-2, snapshot-request-2, snapshot-info-request-2
+zeebe_broker_2 | 02:12:27.422 [topology] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=1, commandApi=172.21.0.3:26501} with state FOLLOWER
+zeebe_broker_2 | 02:12:27.422 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.3:26501-zb-actors-0] INFO  io.zeebe.broker.system - Partition '2' is installed.
+zeebe_broker_2 | 02:12:27.422 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.3:26501-zb-actors-0] INFO  io.zeebe.broker.system - Partition '1' is installed.
+zeebe_broker_2 | 02:12:27.422 [topology] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=1, commandApi=172.21.0.3:26501} with state FOLLOWER
+zeebe_broker_2 | 02:12:27.423 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.3:26501-zb-actors-0] INFO  io.zeebe.broker.system - All partitions are installed. Broker is ready!
+zeebe_broker_2 | 02:12:27.580 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 1 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQACAQAAAAECAAAAAQ==}}, time=1572401547579} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}}
+zeebe_broker_3 | 02:12:27.582 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 2 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536577}, time=1572401547580} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}}
+zeebe_broker_1 | 02:12:27.582 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 0 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536577}, time=1572401547581} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}}
+zeebe_broker_3 | 02:12:27.584 [topology] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=1, commandApi=172.21.0.3:26501} with state FOLLOWER
+zeebe_broker_1 | 02:12:27.584 [topology] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=1, commandApi=172.21.0.3:26501} with state FOLLOWER
+zeebe_broker_3 | 02:12:27.585 [topology] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=1, commandApi=172.21.0.3:26501} with state FOLLOWER
+zeebe_broker_3 | 02:12:27.585 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536577}, time=1572401547580} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}} 
+zeebe_broker_1 | 02:12:27.586 [io.zeebe.gatewa-y.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401536576, state=ALIVE, incarnationNumber=1572401536577}, time=1572401547581} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}} 
+zeebe_broker_1 | 02:12:27.586 [topology] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=1, commandApi=172.21.0.3:26501} with state FOLLOWER
+zeebe_broker_2 | 02:12:27.583 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=1, address=172.21.0.3:26502, properties={brokerInfo=EADJAAAAAQABAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC4zOjI2NTAxBQACAQAAAAECAAAAAQ==}}, time=1572401547579} with BrokerInfo{nodeId=1, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}} 
+zeebe_broker_3 | 02:12:28.734 [service-controller] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Creating leader election for partition 2 in node 2
+zeebe_broker_3 | 02:12:28.736 [service-controller] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Creating leader election for partition 1 in node 2
+zeebe_broker_3 | 02:12:28.737 [io.zeebe.broker.clustering.base.partitions.PartitionLeaderElection] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Partition role transitioning from null to FOLLOWER
+zeebe_broker_3 | 02:12:28.739 [io.zeebe.broker.clustering.base.partitions.PartitionLeaderElection] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Partition role transitioning from null to FOLLOWER
+zeebe_broker_3 | 02:12:28.740 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Removing leader partition services for partition 2
+zeebe_broker_3 | 02:12:28.740 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Removing leader partition services for partition 1
+zeebe_broker_3 | 02:12:28.741 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Installing follower partition service for partition 2
+zeebe_broker_3 | 02:12:28.742 [io.zeebe.broker.clustering.base.partitions.PartitionInstallService] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Installing follower partition service for partition 1
+zeebe_broker_3 | 02:12:28.873 [service-controller] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.logstreams.restore.BrokerRestoreServer - Started restore server for topics: log-replication-2, restore-info-2, snapshot-request-2, snapshot-info-request-2
+zeebe_broker_3 | 02:12:28.873 [service-controller] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.broker.logstreams.restore.BrokerRestoreServer - Started restore server for topics: log-replication-1, restore-info-1, snapshot-request-1, snapshot-info-request-1
+zeebe_broker_3 | 02:12:28.875 [topology] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=2, commandApi=172.21.0.4:26501} with state FOLLOWER
+zeebe_broker_3 | 02:12:28.875 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.4:26501-zb-actors-1] INFO  io.zeebe.broker.system - Partition '2' is installed.
+zeebe_broker_3 | 02:12:28.875 [topology] [172.21.0.4:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=2, commandApi=172.21.0.4:26501} with state FOLLOWER
+zeebe_broker_3 | 02:12:28.875 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.4:26501-zb-actors-1] INFO  io.zeebe.broker.system - Partition '1' is installed.
+zeebe_broker_3 | 02:12:28.876 [io.zeebe.broker.system.monitoring.BrokerHealthCheckService] [172.21.0.4:26501-zb-actors-1] INFO  io.zeebe.broker.system - All partitions are installed. Broker is ready!
+zeebe_broker_3 | 02:12:28.908 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 2 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQACAQAAAAECAAAAAQ==}}, time=1572401548908} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}}
+zeebe_broker_1 | 02:12:28.909 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 0 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538157}, time=1572401548909} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}}
+zeebe_broker_2 | 02:12:28.909 [] [atomix-cluster-events] DEBUG io.zeebe.broker.clustering - Member 1 received event ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538157}, time=1572401548909} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}}
+zeebe_broker_1 | 02:12:28.910 [topology] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=2, commandApi=172.21.0.4:26501} with state FOLLOWER
+zeebe_broker_1 | 02:12:28.910 [topology] [172.21.0.2:26501-zb-actors-1] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=2, commandApi=172.21.0.4:26501} with state FOLLOWER
+zeebe_broker_3 | 02:12:28.909 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.4:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQACAQAAAAECAAAAAQ==}}, time=1572401548908} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}} 
+zeebe_broker_2 | 02:12:28.910 [topology] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 1 on Node{nodeId=2, commandApi=172.21.0.4:26501} with state FOLLOWER
+zeebe_broker_2 | 02:12:28.911 [topology] [172.21.0.3:26501-zb-actors-0] DEBUG io.zeebe.broker.clustering - Updating partition information for partition 2 on Node{nodeId=2, commandApi=172.21.0.4:26501} with state FOLLOWER
+zeebe_broker_2 | 02:12:28.911 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.3:26501-zb-actors-1] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538157}, time=1572401548909} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}} 
+zeebe_broker_1 | 02:12:28.910 [io.zeebe.gateway.impl.broker.cluster.BrokerTopologyManagerImpl] [172.21.0.2:26501-zb-actors-0] DEBUG io.zeebe.gateway - Received membership event: ClusterMembershipEvent{type=METADATA_CHANGED, subject=Member{id=2, address=172.21.0.4:26502, properties={brokerInfo=EADJAAAAAQACAAAAAgAAAAMAAAADAAAAAAABCgBjb21tYW5kQXBpEAAxNzIuMjEuMC40OjI2NTAxBQACAQAAAAECAAAAAQ==}, version=3.2.0-alpha4, timestamp=1572401538156, state=ALIVE, incarnationNumber=1572401538157}, time=1572401548909} with BrokerInfo{nodeId=2, partitionsCount=2, clusterSize=3, replicationFactor=3, partitionRoles={1=FOLLOWER, 2=FOLLOWER}} 
+	
